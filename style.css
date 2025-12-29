@@ -1,116 +1,134 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  background: url("https://i.imgur.com/4HJbzEq.jpg") center/cover no-repeat;
-  height: 100vh;
-  overflow: hidden;
-  color: white;
+  font-family: Helvetica, Arial;
+  background:url("https://i.imgur.com/4HJbzEq.jpg") center/cover;
+  height:100vh;
+  overflow:hidden;
 }
 
 /* STATUS BAR */
 #statusBar {
-  height: 20px;
-  background: linear-gradient(#333, #000);
-  display: flex;
-  justify-content: space-between;
-  padding: 0 8px;
-  font-size: 12px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
+  height:20px;
+  background:linear-gradient(#444,#000);
+  color:white;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  padding:0 6px;
 }
 
 /* SCREENS */
-.screen {
-  position: absolute;
-  inset: 0;
-  padding-top: 20px;
-}
-
-.hidden { display: none; }
+.screen { position:absolute; inset:0; padding-top:20px; }
+.hidden { display:none; }
 
 /* BOOT */
 #boot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 40px;
-  font-weight: bold;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
+  color:white;
 }
 
 /* LOCK */
 #lock {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
 }
-#lock h1 { font-size: 56px; }
-#lock p { opacity: 0.7; }
+#lockTime { font-size:60px; margin-bottom:40px; }
+
+/* SLIDER */
+#slider {
+  width:260px;
+  height:50px;
+  background:rgba(0,0,0,.6);
+  border-radius:25px;
+  position:relative;
+  box-shadow:inset 0 0 5px black;
+}
+#slider span {
+  position:absolute;
+  width:100%;
+  text-align:center;
+  top:14px;
+  color:#ccc;
+}
+#knob {
+  width:50px;
+  height:50px;
+  background:linear-gradient(#fff,#aaa);
+  border-radius:25px;
+  position:absolute;
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#444;
+  font-size:24px;
+}
 
 /* HOME */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 30px;
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  padding:30px;
+  color:white;
+  text-align:center;
 }
-
-.icon {
-  text-align: center;
-  font-size: 12px;
-}
-
 .icon-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  margin: auto;
-  background: linear-gradient(#eee, #aaa);
-  box-shadow: inset 0 1px 2px #fff, 0 4px 8px rgba(0,0,0,.5);
+  width:60px;
+  height:60px;
+  border-radius:14px;
+  margin:auto;
+  box-shadow:inset 0 1px 2px white,0 4px 8px rgba(0,0,0,.6);
 }
+.icon span { font-size:12px; }
 
-/* ICON TYPES */
-.gear { background: radial-gradient(#ddd, #777); }
-.notes { background: linear-gradient(#fff8b0, #e6d27a); }
+/* ICON COLORS */
+.camera{background:linear-gradient(#444,#222);}
+.photos{background:linear-gradient(#ffecb3,#d9c36a);}
+.store{background:linear-gradient(#6ec6ff,#1e88e5);}
+.notes{background:linear-gradient(#fff8b0,#e6d27a);}
+.settings{background:linear-gradient(#ccc,#777);}
+.phone{background:linear-gradient(#6fbf73,#2e7d32);}
+.mail{background:linear-gradient(#90caf9,#1565c0);}
+.safari{background:linear-gradient(#4fc3f7,#01579b);}
+.music{background:linear-gradient(#f48fb1,#ad1457);}
 
 /* DOCK */
 .dock {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  height: 80px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  right:10px;
+  height:90px;
+  background:rgba(255,255,255,.25);
+  border-radius:20px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
 }
 
 /* APP VIEW */
 #appView {
-  background: #f2f2f2;
-  color: black;
-  animation: slideUp .25s ease-out;
+  background:#f2f2f2;
+  animation:slideUp .25s ease-out;
 }
-
-.nav {
-  height: 44px;
-  background: linear-gradient(#fdfdfd, #cfcfcf);
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  border-bottom: 1px solid #999;
+.navBar {
+  height:44px;
+  background:linear-gradient(#fdfdfd,#cfcfcf);
+  border-bottom:1px solid #999;
+  display:flex;
+  align-items:center;
+  padding:0 10px;
 }
+#appContent { padding:10px; }
 
 @keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from { transform:translateY(100%); }
+  to { transform:translateY(0); }
 }
