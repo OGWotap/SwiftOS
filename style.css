@@ -2,84 +2,115 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
-  background: black;
-  color: white;
+  background: url("https://i.imgur.com/4HJbzEq.jpg") center/cover no-repeat;
   height: 100vh;
   overflow: hidden;
+  color: white;
 }
 
+/* STATUS BAR */
+#statusBar {
+  height: 20px;
+  background: linear-gradient(#333, #000);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 12px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* SCREENS */
 .screen {
   position: absolute;
   inset: 0;
+  padding-top: 20px;
+}
+
+.hidden { display: none; }
+
+/* BOOT */
+#boot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* LOCK */
+#lock {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+#lock h1 { font-size: 56px; }
+#lock p { opacity: 0.7; }
 
-.hidden {
-  display: none;
+/* HOME */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 30px;
+  gap: 20px;
 }
 
-/* Boot */
-#boot {
-  font-size: 42px;
-  font-weight: 800;
-}
-
-/* Lock */
-#lock h1 {
-  font-size: 56px;
-}
-#lock p {
-  opacity: 0.7;
-}
-
-/* Home */
-#home {
-  justify-content: flex-end;
-  padding-bottom: 40px;
-}
-
-.dock {
-  display: flex;
-  gap: 40px;
-}
-
-.app {
+.icon {
   text-align: center;
-  font-size: 32px;
-}
-.app span {
-  display: block;
-  font-size: 13px;
-  margin-top: 5px;
+  font-size: 12px;
 }
 
-/* App View */
-#appView {
-  background: #111;
+.icon-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  margin: auto;
+  background: linear-gradient(#eee, #aaa);
+  box-shadow: inset 0 1px 2px #fff, 0 4px 8px rgba(0,0,0,.5);
 }
 
-.app-header {
+/* ICON TYPES */
+.gear { background: radial-gradient(#ddd, #777); }
+.notes { background: linear-gradient(#fff8b0, #e6d27a); }
+
+/* DOCK */
+.dock {
   position: absolute;
-  top: 0;
-  width: 100%;
-  height: 56px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 80px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* APP VIEW */
+#appView {
+  background: #f2f2f2;
+  color: black;
+  animation: slideUp .25s ease-out;
+}
+
+.nav {
+  height: 44px;
+  background: linear-gradient(#fdfdfd, #cfcfcf);
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 15px;
-  background: #000;
+  padding: 0 10px;
+  border-bottom: 1px solid #999;
 }
 
-#appContent {
-  margin-top: 60px;
-  padding: 20px;
-  width: 100%;
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
-
