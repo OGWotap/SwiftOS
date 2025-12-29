@@ -2,49 +2,44 @@ const boot = document.getElementById("boot");
 const lock = document.getElementById("lock");
 const home = document.getElementById("home");
 const appView = document.getElementById("appView");
-const timeEl = document.getElementById("time");
+const lockTime = document.getElementById("lockTime");
+const statusTime = document.getElementById("statusTime");
 const appTitle = document.getElementById("appTitle");
 const appContent = document.getElementById("appContent");
 
-/* Boot */
+/* BOOT */
 setTimeout(() => {
   boot.classList.add("hidden");
   lock.classList.remove("hidden");
 }, 2000);
 
-/* Time */
+/* TIME */
 setInterval(() => {
-  const now = new Date();
-  timeEl.textContent = now.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  const t = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  lockTime.textContent = t;
+  statusTime.textContent = t;
 }, 1000);
 
-/* Unlock gesture */
-let startY = 0;
-lock.addEventListener("touchstart", e => startY = e.touches[0].clientY);
+/* UNLOCK */
+let startX = 0;
+lock.addEventListener("touchstart", e => startX = e.touches[0].clientX);
 lock.addEventListener("touchend", e => {
-  if (startY - e.changedTouches[0].clientY > 100) {
+  if (e.changedTouches[0].clientX - startX > 100) {
     lock.classList.add("hidden");
     home.classList.remove("hidden");
   }
 });
 
-/* App system */
+/* APPS */
 function openApp(id) {
   const app = apps[id];
-  if (!app) return;
-
-  home.classList.add("hidden");
-  appView.classList.remove("hidden");
   appTitle.textContent = app.title;
   appContent.innerHTML = app.render();
-  app.onOpen?.();
+  home.classList.add("hidden");
+  appView.classList.remove("hidden");
 }
 
 function closeApp() {
   appView.classList.add("hidden");
   home.classList.remove("hidden");
 }
-
