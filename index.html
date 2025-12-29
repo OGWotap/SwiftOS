@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SwiftOS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>SwiftOS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,44 +15,45 @@
 </div>
 
 <!-- BOOT -->
-<div id="boot"> SwiftOS</div>
+<div id="boot"> SwiftOS</div>
 
-<!-- LOCK -->
+<!-- LOCK SCREEN -->
 <div id="lock" class="screen hidden">
-  <h1 id="lockTime"></h1>
-  <p>slide to unlock</p>
+  <div id="lockTime"></div>
+  <div id="slider">
+    <div id="knob">▸</div>
+    <span>slide to unlock</span>
+  </div>
 </div>
 
-<!-- HOME -->
+<!-- HOME SCREEN -->
 <div id="home" class="screen hidden">
   <div class="grid">
-    <div class="icon" onclick="openApp('settings')">
-      <div class="icon-img gear"></div>
-      <span>Settings</span>
-    </div>
-    <div class="icon" onclick="openApp('notes')">
-      <div class="icon-img notes"></div>
-      <span>Notes</span>
-    </div>
+    <div class="icon" onclick="openApp('camera')"><div class="icon-img camera"></div><span>Camera</span></div>
+    <div class="icon" onclick="openApp('photos')"><div class="icon-img photos"></div><span>Photos</span></div>
+    <div class="icon" onclick="openApp('appstore')"><div class="icon-img store"></div><span>App Store</span></div>
+    <div class="icon" onclick="openApp('notes')"><div class="icon-img notes"></div><span>Notes</span></div>
+    <div class="icon" onclick="openApp('settings')"><div class="icon-img settings"></div><span>Settings</span></div>
   </div>
 
   <div class="dock">
-    <div class="icon" onclick="openApp('notes')">
-      <div class="icon-img notes"></div>
-    </div>
+    <div class="icon"><div class="icon-img phone"></div></div>
+    <div class="icon"><div class="icon-img mail"></div></div>
+    <div class="icon"><div class="icon-img safari"></div></div>
+    <div class="icon"><div class="icon-img music"></div></div>
   </div>
 </div>
 
-<!-- APP -->
+<!-- APP VIEW -->
 <div id="appView" class="screen hidden">
-  <div class="nav">
-    <button onclick="closeApp()">Home</button>
+  <div class="navBar">
+    <button onclick="closeApp()">◁</button>
     <span id="appTitle"></span>
   </div>
   <div id="appContent"></div>
 </div>
 
 <script src="apps.js"></script>
-<script src="script.js"></script>
+<script src="os.js"></script>
 </body>
 </html>
